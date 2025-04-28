@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "AI Try-On Assistant",
+  "version": "1.0.0",
+  "description": "Virtual try-on for clothing using AI",
+  "permissions": ["activeTab", "storage", "scripting", "tabs"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.com/*", "*://*.zara.com/*", "*://*.hm.com/*"],
+      "js": ["content-bundle.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}
